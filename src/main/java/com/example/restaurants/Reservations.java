@@ -18,8 +18,14 @@ public class Reservations {
     @ManyToOne
     private User user;
 
+    @ManyToOne
+    private Tables table;
+
     public long getId() {
         return id;
+    }
+
+    public Reservations() {
     }
 
     public Reservations(String timeFrom, String timeTo) {
@@ -45,5 +51,9 @@ public class Reservations {
 
     public User getUser() {
         return user;
+    }
+
+    public Tables getTable() {
+        return table;
     }
 }

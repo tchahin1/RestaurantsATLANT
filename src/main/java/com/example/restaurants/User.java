@@ -29,15 +29,20 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column(nullable = false)
-    private String country;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private Country country;
 
-    @Column(nullable = false)
-    private String city;
+    @OneToOne
+    @JoinColumn(nullable = false)
+    private City city;
 
     private boolean admin;
 
-    public User(String username, String password, String name, String lastName, String phoneNumber, String email, boolean admin, String country, String city) {
+    public User() {
+    }
+
+    public User(String username, String password, String name, String lastName, String phoneNumber, String email, boolean admin, Country country, City city) {
         this.username = username;
         this.password = password;
         this.name = name;
@@ -45,6 +50,8 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.admin = admin;
+        this.country = country;
+        this.city = city;
     }
 
     public long getId() {
@@ -107,19 +114,19 @@ public class User {
         this.admin = admin;
     }
 
-    public String getCountry() {
+    public Country getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
+    public void setCountry(Country country) {
         this.country = country;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 }
